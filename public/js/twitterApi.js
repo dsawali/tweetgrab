@@ -6,10 +6,10 @@ const self = module.exports = {
         const Twitter = require('twitter');
         
         client = new Twitter({
-            consumer_key: 'RuzO44ditoOZvItSUmvhuA1ih',
-            consumer_secret: 'QtztiYRh1wo6pf7pC7nxhyTBttkyg6oeD9iGAaQa827peySUAd',
-            access_token_key: '1056332584064442368-F9hifzPSVZFDgajxRiyaMQyaYKcHGy',
-            access_token_secret: 'kzX3tZ4H7BBjq8UQg4jeG4JInFJURcSqXNSuv56QIMpjy'
+            consumer_key: '',
+            consumer_secret: '',
+            access_token_key: '',
+            access_token_secret: ''
         });
     },
 
