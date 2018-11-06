@@ -28,15 +28,12 @@ $(document).ready(() => {
             success: (id) => {
                 console.log(id);
                 //Creating the twitter embedded tweet
-                if(id.match(/^[0-9]*$/)){
-                    twttr.widgets.createTweet(id,
-                        document.getElementById('tweet-wrapper'),
-                        {
-                            align: 'center',
-                            theme: 'dark'
-                        });
+                const numberRegex = /^[0-9]*$/;
+                //Checking whether the id is a valid id or not (all number)
+                if (id.match(numberRegex)) {
+                    createTweet(id);
                 } else {
-                    $('#tweet-wrapper').append('<h1>' + id + '</h1>');
+                    alert(id);
                 }
             }
         });
@@ -56,3 +53,17 @@ $(document).ready(() => {
         });
     });
 });
+
+function createTweet(id) {
+    const wrapperClass = '.tweet-wrapper';
+    let containerId = 'tweet-container' + ($(wrapperClass + ' > div').length);
+    let tweetContainer = $('<div id=\"' + containerId + '\"></div>').text('');
+    $(wrapperClass).prepend(tweetContainer);
+
+    twttr.widgets.createTweet(id,
+        document.getElementById(containerId),
+        {
+            align: 'center',
+            theme: 'dark'
+        });
+}
