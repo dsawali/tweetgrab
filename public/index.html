@@ -3,19 +3,21 @@
     <title>tweetgrab</title>
     <link rel="stylesheet" href = "css/index.css">
     <link href="https://fonts.googleapis.com/css?family=Arvo" rel="stylesheet">
+    <script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js"></script>
     <script src = "js/main.js"></script>
 </head>
 <body>
     <div class="body-wrapper">
         <h1 >tweetgrab</h1>
         <div class="input-wrapper">
-            <input type="text" id="search-box" onchange="getInputTextValue()">
-            <select id="search-context" onchange="selectDropdownValue()">
+            <input type="text" id="search-box">
+            <select id="search-context">
                 <option value="hashtag" selected="selected">hashtag</option>
                 <option value="user">user</option>
                 <option value="text">text</option>
             </select>
         </div>
+        <div id="tweet-wrapper"></div>
     </div>
 </body>
 </html>
