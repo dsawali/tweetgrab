@@ -1,4 +1,6 @@
 //This file should not be accessible from the website, since this file has confidential information.
+require('dotenv').config();
+
 module.exports = {
     client: '',
     //Authorizing the twitter 
@@ -6,10 +8,10 @@ module.exports = {
         const Twitter = require('twitter');
 
         client = new Twitter({
-            consumer_key: '',
-            consumer_secret: '',
-            access_token_key: '',
-            access_token_secret: ''
+            consumer_key: process.env.CONSUMER_KEY,
+            consumer_secret: process.env.CONSUMER_SECRET,
+            access_token_key: process.env.ACCESS_TOKEN_KEY,
+            access_token_secret: process.env.ACCESS_TOKEN_SECRET
         });
     },
 

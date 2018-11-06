@@ -3,6 +3,8 @@ const app = express();
 const port = 3000;
 const twitterApi = require('./public/js/twitterApi.js');
 
+require('dotenv').config();
+
 let option = 'hashtag';
 
 twitterApi.init();
