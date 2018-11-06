@@ -14,17 +14,11 @@ module.exports = {
     },
 
     //Searching the tweet
-    callAPI: async (query, option) => {
+    callAPI: (query, option) => {
         query = (option === 'hashtag') ? '#' + query : query;
         query = (option === 'user') ? '@' + query : query;
 
-        try {
-            return await client.get('search/tweets',
-                { q: query, result_type: 'recent', count: 1 });
-        } catch (err) {
-            console.log('Error::', err);
-        }
-    },
+        return client.get('search/tweets',
+            { q: query, result_type: 'recent', count: 1 });
+    }
 }
-
-
