@@ -1,10 +1,10 @@
 //This file should not be accessible from the website, since this file has confidential information.
-
-const self = module.exports = {
+module.exports = {
     client: '',
+    //Authorizing the twitter 
     init: () => {
         const Twitter = require('twitter');
-        
+
         client = new Twitter({
             consumer_key: '',
             consumer_secret: '',
@@ -13,18 +13,18 @@ const self = module.exports = {
         });
     },
 
-    getJSON: (query) => {
-        self.callAPI(self.processAPI, query);
-    },
+    //Searching the tweet
+    callAPI: async (query, option) => {
+        query = (option === 'hashtag') ? '#' + query : query;
+        query = (option === 'user') ? '@' + query : query;
 
-    callAPI: (callback, query) => {
-        client.get('search/tweets', { q: query, result_type: 'recent', count: 5 }, function (error, tweets, response) {
-            if (error) throw error;
-            callback(tweets);
-        });
+        try {
+            return await client.get('search/tweets',
+                { q: query, result_type: 'recent', count: 1 });
+        } catch (err) {
+            console.log('Error::', err);
+        }
     },
-
-    processAPI: (response) => {
-        console.log(response);
-    }
 }
+
+
