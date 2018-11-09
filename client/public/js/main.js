@@ -21,7 +21,7 @@ $(document).ready(() => {
     $('#search-box').change(() => {
         let searchText = $('#search-box').val();
         let searchData = { 'searchData': searchText };
-        /*$.ajax({
+        $.ajax({
             type: 'GET',
             url: '/search',
             data: searchData,
@@ -36,7 +36,7 @@ $(document).ready(() => {
                     alert(id);
                 }
             }
-        });*/
+        });
         console.log(searchData);
     });
 
@@ -44,14 +44,14 @@ $(document).ready(() => {
     $('#search-context').change(() => {
         let optionText = $('#search-context').val();
         let optionData = { 'optionData': optionText };
-        /*$.ajax({
+        $.ajax({
             type: 'GET',
             url: '/option',
             data: optionData,
             success: () => {
                 $('#search-box').val('')
             }
-        });*/
+        });
         console.log(optionData);
     });
 });

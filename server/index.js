@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3000;
+const port = 5000;
 const twitterApi = require('./twitterApi.js');
 
 require('dotenv').config();
@@ -8,11 +8,11 @@ require('dotenv').config();
 let option = 'hashtag';
 
 twitterApi.init();
-app.use(express.static('../client/public'));
+/*app.use(express.static('../client/public'));
 
 app.get('/', (req,res) => {
     res.sendFile(__dirname + '../client/public/index.html');
-});
+});*/
 
 //Searching the tweets and showing it.
 app.get('/search', (req,res) => {
