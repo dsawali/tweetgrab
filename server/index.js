@@ -1,17 +1,17 @@
 const express = require('express');
 const app = express();
 const port = 3000;
-const twitterApi = require('./public/js/twitterApi.js');
+const twitterApi = require('./twitterApi.js');
 
 require('dotenv').config();
 
 let option = 'hashtag';
 
 twitterApi.init();
-app.use(express.static('public'));
+app.use(express.static('../client/public'));
 
 app.get('/', (req,res) => {
-    res.sendFile(__dirname + '/public/index.html');
+    res.sendFile(__dirname + '../client/public/index.html');
 });
 
 //Searching the tweets and showing it.
@@ -25,11 +25,15 @@ app.get('/search', (req,res) => {
         } else {
             res.send("Sorry the tweet is not found.");
         }
+    }).catch((error) => {
+        //For handling the promise rejection
+        console.log(error);
     });
 });
 
 //Changing the option
 app.get('/option', (req,res) => {
+    console.log("hello" + option);
     option = req.query.optionData;
     res.send(option);
 });

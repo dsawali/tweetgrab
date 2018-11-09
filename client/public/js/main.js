@@ -21,7 +21,7 @@ $(document).ready(() => {
     $('#search-box').change(() => {
         let searchText = $('#search-box').val();
         let searchData = { 'searchData': searchText };
-        $.ajax({
+        /*$.ajax({
             type: 'GET',
             url: '/search',
             data: searchData,
@@ -36,34 +36,35 @@ $(document).ready(() => {
                     alert(id);
                 }
             }
-        });
+        });*/
+        console.log(searchData);
     });
 
     //Stores value of dropdown menu in a variable
     $('#search-context').change(() => {
         let optionText = $('#search-context').val();
         let optionData = { 'optionData': optionText };
-        $.ajax({
+        /*$.ajax({
             type: 'GET',
             url: '/option',
             data: optionData,
             success: () => {
                 $('#search-box').val('')
             }
-        });
+        });*/
+        console.log(optionData);
     });
 });
 
 function createTweet(id) {
     const wrapperClass = '.tweet-wrapper';
-    let containerId = 'tweet-container' + ($(wrapperClass + ' > div').length);
-    let tweetContainer = $('<div id=\"' + containerId + '\"></div>').text('');
+    let containerId = 'tweet-' + ($('.tweet-container').length);
+    let tweetContainer = '<div class=\"tweet-container\" id=\"' + containerId + '\"></div>';
     $(wrapperClass).prepend(tweetContainer);
 
     twttr.widgets.createTweet(id,
         document.getElementById(containerId),
         {
-            align: 'center',
-            theme: 'dark'
+            align: 'center'
         });
 }
